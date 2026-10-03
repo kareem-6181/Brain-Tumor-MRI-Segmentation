@@ -1,0 +1,3777 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080808">
+
+    <meta
+        name="description"
+        content="Brain Tumor MRI Segmentation — Medical AI system using U-Net++ and ResNet50 for brain tumor segmentation."
+    >
+
+    <meta
+        name="keywords"
+        content="Brain Tumor, MRI, Medical AI, Computer Vision, U-Net++, ResNet50, Segmentation, Deep Learning"
+    >
+
+    <title>
+        Brain Tumor MRI Segmentation
+    </title>
+
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         MAIN CSS
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         SPLASH SCREEN
+    ========================================================== -->
+
+    <div id="splashScreen">
+
+        <div class="splash-background">
+
+            <div class="splash-grid"></div>
+
+            <div class="splash-glow splash-glow-one"></div>
+
+            <div class="splash-glow splash-glow-two"></div>
+
+            <div class="neural-network">
+
+                <span class="neural-node node-1"></span>
+                <span class="neural-node node-2"></span>
+                <span class="neural-node node-3"></span>
+                <span class="neural-node node-4"></span>
+                <span class="neural-node node-5"></span>
+                <span class="neural-node node-6"></span>
+                <span class="neural-node node-7"></span>
+                <span class="neural-node node-8"></span>
+                <span class="neural-node node-9"></span>
+                <span class="neural-node node-10"></span>
+
+                <span class="neural-line line-1"></span>
+                <span class="neural-line line-2"></span>
+                <span class="neural-line line-3"></span>
+                <span class="neural-line line-4"></span>
+                <span class="neural-line line-5"></span>
+                <span class="neural-line line-6"></span>
+
+            </div>
+
+            <div class="splash-scan-line"></div>
+
+        </div>
+
+
+        <div class="splash-content">
+
+            <div class="splash-icon">
+                🧠
+            </div>
+
+            <h1 class="splash-title">
+
+                <span class="splash-word">
+                    Brain
+                </span>
+
+                <span class="splash-word">
+                    Tumor
+                </span>
+
+                <span class="splash-word">
+                    MRI
+                </span>
+
+                <span class="splash-word">
+                    Segmentation
+                </span>
+
+            </h1>
+
+
+            <p class="splash-subtitle">
+
+                MEDICAL AI
+                <span>•</span>
+                COMPUTER VISION
+                <span>•</span>
+                DEEP LEARNING
+
+            </p>
+
+
+            <div class="splash-loading">
+
+                <div class="splash-loading-bar">
+
+                    <span></span>
+
+                </div>
+
+                <p>
+                    Initializing AI System...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MAIN SITE WRAPPER
+    ========================================================== -->
+
+    <div id="siteWrapper">
+
+
+        <!-- =====================================================
+             NAVBAR
+        ====================================================== -->
+
+        <header id="navbar">
+
+            <div class="nav-container">
+
+
+                <!-- LOGO -->
+
+                <a
+                    href="#home"
+                    class="logo"
+                    aria-label="Brain Tumor MRI Segmentation Home"
+                >
+
+                    <span class="logo-icon">
+                        🧠
+                    </span>
+
+                    <span class="logo-text">
+
+                        <strong>
+                            BTMS
+                        </strong>
+
+                        <small>
+                            MEDICAL AI
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+
+                <!-- NAVIGATION -->
+
+                <nav id="navMenu">
+
+                    <a href="#home">
+                        Home
+                    </a>
+
+                    <a href="#project">
+                        Project
+                    </a>
+
+                    <a href="#architecture">
+                        Architecture
+                    </a>
+
+                    <a href="#performance">
+                        Performance
+                    </a>
+
+                    <a href="#demo">
+                        Demo
+                    </a>
+
+                    <a href="#dataset">
+                        Dataset
+                    </a>
+
+                    <a href="#contact">
+                        Contact
+                    </a>
+
+                </nav>
+
+
+
+                <!-- NAV ACTIONS -->
+
+                <div class="nav-actions">
+
+
+                    <button
+                        id="themeSwitch"
+                        class="nav-switch"
+                        type="button"
+                        aria-label="Change theme"
+                    >
+                        ◐
+                    </button>
+
+
+                    <button
+                        id="menuToggle"
+                        type="button"
+                        aria-label="Open navigation"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             MAIN
+        ====================================================== -->
+
+        <main>
+
+
+            <!-- =================================================
+                 HERO SECTION
+            ================================================== -->
+
+            <section
+                id="home"
+                class="hero-section"
+            >
+
+                <div class="hero-background">
+
+                    <div class="hero-grid"></div>
+
+                    <div class="hero-glow hero-glow-red"></div>
+
+                    <div class="hero-glow hero-glow-cyan"></div>
+
+                    <div class="hero-particles">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="container hero-container">
+
+
+                    <!-- HERO LEFT -->
+
+                    <div class="hero-content reveal">
+
+
+                        <div class="hero-label">
+
+                            <span class="status-dot"></span>
+
+                            MEDICAL AI
+
+                            <span class="hero-label-separator">
+                                •
+                            </span>
+
+                            COMPUTER VISION
+
+                        </div>
+
+
+
+                        <h1 class="hero-title">
+
+                            <span>
+                                Brain Tumor
+                            </span>
+
+                            <span class="hero-title-highlight">
+                                MRI Segmentation
+                            </span>
+
+                        </h1>
+
+
+
+                        <div class="hero-tagline">
+
+                            Seeing beyond MRI.
+                            <br>
+
+                            <span>
+                                Understanding the unseen.
+                            </span>
+
+                        </div>
+
+
+
+                        <p class="hero-description">
+
+                            A deep learning system designed to identify
+                            and segment tumor regions from brain MRI scans
+                            using U-Net++ with a ResNet50 encoder.
+
+                        </p>
+
+
+
+                        <!-- HERO BUTTONS -->
+
+                        <div class="hero-buttons">
+
+
+                            <a
+                                href="#demo"
+                                class="btn btn-primary"
+                            >
+
+                                <span>
+                                    Try Live Demo
+                                </span>
+
+                                <span class="btn-arrow">
+                                    →
+                                </span>
+
+                            </a>
+
+
+                            <a
+                                href="#architecture"
+                                class="btn btn-secondary"
+                            >
+
+                                <span>
+                                    Explore System
+                                </span>
+
+                                <span class="btn-arrow">
+                                    ↓
+                                </span>
+
+                            </a>
+
+
+                        </div>
+
+
+
+                        <!-- HERO METRICS -->
+
+                        <div class="hero-metrics">
+
+
+                            <div class="metric">
+
+                                <strong>
+                                    3929
+                                </strong>
+
+                                <span>
+                                    MRI Images
+                                </span>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <strong>
+                                    256×256
+                                </strong>
+
+                                <span>
+                                    Input Size
+                                </span>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <strong>
+                                    91.18%
+                                </strong>
+
+                                <span>
+                                    Dice Score
+                                </span>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <strong>
+                                    83.79%
+                                </strong>
+
+                                <span>
+                                    IoU
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- HERO RIGHT -->
+
+                    <div class="hero-visual reveal">
+
+
+                        <div class="hero-visual-glow"></div>
+
+
+                        <div class="hero-orbit orbit-one"></div>
+
+                        <div class="hero-orbit orbit-two"></div>
+
+                        <div class="hero-orbit orbit-three"></div>
+
+
+
+                        <div class="hero-brain">
+
+                            <div class="brain-frame">
+
+                                <div class="brain-frame-corner top-left"></div>
+                                <div class="brain-frame-corner top-right"></div>
+                                <div class="brain-frame-corner bottom-left"></div>
+                                <div class="brain-frame-corner bottom-right"></div>
+
+
+                                <img
+                                    src="{{ url_for('static', filename='images/brain.png') }}"
+                                    alt="Brain MRI Artificial Intelligence Visualization"
+                                >
+
+
+                                <div class="brain-scan"></div>
+
+                                <div class="brain-scan-horizontal"></div>
+
+
+                                <div class="brain-data data-top">
+
+                                    <span>
+                                        MODEL
+                                    </span>
+
+                                    <strong>
+                                        U-NET++
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="brain-data data-bottom">
+
+                                    <span>
+                                        ENCODER
+                                    </span>
+
+                                    <strong>
+                                        RESNET50
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="brain-corner-label">
+
+                                    AI VISION
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- FLOATING INFO -->
+
+                        <div class="brain-info brain-info-one">
+
+                            <span class="info-line"></span>
+
+                            <div>
+
+                                <strong>
+                                    AI ANALYSIS
+                                </strong>
+
+                                <small>
+                                    Neural Segmentation
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="brain-info brain-info-two">
+
+                            <span class="info-line"></span>
+
+                            <div>
+
+                                <strong>
+                                    91.18%
+                                </strong>
+
+                                <small>
+                                    Dice Score
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="brain-info brain-info-three">
+
+                            <span class="info-line"></span>
+
+                            <div>
+
+                                <strong>
+                                    256×256
+                                </strong>
+
+                                <small>
+                                    Model Input
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ABOUT / PROJECT
+            ================================================== -->
+
+            <section
+                id="project"
+                class="section project-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                01
+                            </span>
+
+                            THE PROJECT
+
+                        </div>
+
+
+                        <h2>
+
+                            Turning MRI scans
+                            <br>
+
+                            <span>
+                                into meaningful segmentation.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Brain Tumor MRI Segmentation is a Medical AI
+                            project designed to identify and segment tumor
+                            regions from brain MRI scans using deep learning
+                            and computer vision.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="project-content">
+
+
+                        <div class="project-main-text reveal">
+
+                            <p>
+
+                                The system uses a U-Net++ architecture with
+                                a ResNet50 encoder to generate precise tumor
+                                masks from MRI images.
+
+                            </p>
+
+
+                            <p>
+
+                                The project focuses on automated image
+                                segmentation and visual analysis while
+                                demonstrating the practical application
+                                of deep learning in medical imaging.
+
+                            </p>
+
+
+                            <p>
+
+                                The model was trained and evaluated on the
+                                LGG MRI Segmentation Dataset with dedicated
+                                preprocessing and image augmentation
+                                techniques.
+
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="project-side reveal">
+
+
+                            <div class="project-side-line">
+
+                                <span>
+                                    FIELD
+                                </span>
+
+                                <strong>
+                                    Medical AI
+                                </strong>
+
+                            </div>
+
+
+                            <div class="project-side-line">
+
+                                <span>
+                                    TASK
+                                </span>
+
+                                <strong>
+                                    Semantic Segmentation
+                                </strong>
+
+                            </div>
+
+
+                            <div class="project-side-line">
+
+                                <span>
+                                    ARCHITECTURE
+                                </span>
+
+                                <strong>
+                                    U-Net++
+                                </strong>
+
+                            </div>
+
+
+                            <div class="project-side-line">
+
+                                <span>
+                                    ENCODER
+                                </span>
+
+                                <strong>
+                                    ResNet50
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROJECT CARDS -->
+
+                    <div class="project-cards">
+
+
+                        <article class="project-card reveal">
+
+                            <div class="card-number">
+                                01
+                            </div>
+
+                            <div class="project-icon">
+                                ◉
+                            </div>
+
+                            <h3>
+                                Computer Vision
+                            </h3>
+
+                            <p>
+                                Extracting meaningful visual information
+                                from MRI scans using deep learning.
+                            </p>
+
+                        </article>
+
+
+                        <article class="project-card reveal">
+
+                            <div class="card-number">
+                                02
+                            </div>
+
+                            <div class="project-icon">
+                                ✦
+                            </div>
+
+                            <h3>
+                                Medical AI
+                            </h3>
+
+                            <p>
+                                Applying artificial intelligence techniques
+                                to medical image analysis.
+                            </p>
+
+                        </article>
+
+
+                        <article class="project-card reveal">
+
+                            <div class="card-number">
+                                03
+                            </div>
+
+                            <div class="project-icon">
+                                ◎
+                            </div>
+
+                            <h3>
+                                Semantic Segmentation
+                            </h3>
+
+                            <p>
+                                Producing pixel-level segmentation masks
+                                for the predicted tumor region.
+                            </p>
+
+                        </article>
+
+
+                        <article class="project-card reveal">
+
+                            <div class="card-number">
+                                04
+                            </div>
+
+                            <div class="project-icon">
+                                ◇
+                            </div>
+
+                            <h3>
+                                Deep Learning
+                            </h3>
+
+                            <p>
+                                A U-Net++ segmentation architecture with
+                                ResNet50 feature extraction.
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SYSTEM OVERVIEW
+            ================================================== -->
+
+            <section
+                id="overview"
+                class="section overview-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="overview-header reveal">
+
+                        <div class="section-label">
+
+                            <span>
+                                02
+                            </span>
+
+                            SYSTEM OVERVIEW
+
+                        </div>
+
+                        <h2>
+                            From image
+                            <span>
+                                to insight.
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+
+                    <div class="overview-grid">
+
+
+                        <div class="overview-visual reveal">
+
+
+                            <div class="overview-circle">
+
+                                <div class="overview-circle-inner">
+
+                                    <span class="overview-brain-icon">
+                                        🧠
+                                    </span>
+
+                                    <strong>
+                                        AI
+                                    </strong>
+
+                                    <small>
+                                        MRI ANALYSIS
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="overview-ring ring-one"></div>
+
+                            <div class="overview-ring ring-two"></div>
+
+                            <div class="overview-ring ring-three"></div>
+
+
+                        </div>
+
+
+
+                        <div class="overview-content reveal">
+
+
+                            <p class="overview-lead">
+
+                                The system receives a brain MRI scan,
+                                preprocesses the image, extracts deep
+                                visual features and generates a binary
+                                segmentation mask highlighting the
+                                detected tumor region.
+
+                            </p>
+
+
+                            <div class="overview-points">
+
+
+                                <div class="overview-point">
+
+                                    <span>
+                                        01
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Image Processing
+                                        </strong>
+
+                                        <p>
+                                            MRI images are resized and
+                                            normalized before inference.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="overview-point">
+
+                                    <span>
+                                        02
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Feature Extraction
+                                        </strong>
+
+                                        <p>
+                                            ResNet50 extracts high-level
+                                            visual representations.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="overview-point">
+
+                                    <span>
+                                        03
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Segmentation
+                                        </strong>
+
+                                        <p>
+                                            U-Net++ reconstructs spatial
+                                            information and predicts the mask.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ARCHITECTURE
+            ================================================== -->
+
+            <section
+                id="architecture"
+                class="section architecture-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                03
+                            </span>
+
+                            ARCHITECTURE
+
+                        </div>
+
+
+                        <h2>
+
+                            How the AI
+                            <span>
+                                sees.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Follow the complete segmentation pipeline
+                            from MRI input to the final tumor mask.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- ARCHITECTURE FLOW -->
+
+                    <div class="architecture-wrapper">
+
+
+                        <div class="architecture-line">
+
+                            <span></span>
+
+                        </div>
+
+
+                        <div class="architecture-flow">
+
+
+                            <!-- NODE 1 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="input"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    01
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    MRI
+                                </span>
+
+                                <strong>
+                                    MRI Input
+                                </strong>
+
+                                <small>
+                                    Brain Scan
+                                </small>
+
+                            </button>
+
+
+
+                            <!-- NODE 2 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="preprocessing"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    02
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    ↗
+                                </span>
+
+                                <strong>
+                                    Preprocessing
+                                </strong>
+
+                                <small>
+                                    Resize + Normalize
+                                </small>
+
+                            </button>
+
+
+
+                            <!-- NODE 3 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="encoder"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    03
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    R50
+                                </span>
+
+                                <strong>
+                                    ResNet50
+                                </strong>
+
+                                <small>
+                                    Feature Extraction
+                                </small>
+
+                            </button>
+
+
+
+                            <!-- NODE 4 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="decoder"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    04
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    U++
+                                </span>
+
+                                <strong>
+                                    U-Net++
+                                </strong>
+
+                                <small>
+                                    Nested Decoder
+                                </small>
+
+                            </button>
+
+
+
+                            <!-- NODE 5 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="head"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    05
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    1C
+                                </span>
+
+                                <strong>
+                                    Segmentation Head
+                                </strong>
+
+                                <small>
+                                    Pixel Prediction
+                                </small>
+
+                            </button>
+
+
+
+                            <!-- NODE 6 -->
+
+                            <button
+                                class="arch-node reveal"
+                                data-stage="mask"
+                                type="button"
+                            >
+
+                                <span class="arch-node-number">
+                                    06
+                                </span>
+
+                                <span class="arch-node-icon">
+                                    MASK
+                                </span>
+
+                                <strong>
+                                    Tumor Mask
+                                </strong>
+
+                                <small>
+                                    Final Output
+                                </small>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ARCHITECTURE DETAILS -->
+
+                    <div class="arch-details reveal">
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="input"
+                        >
+
+                            <span class="detail-number">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    MRI Input
+                                </h3>
+
+                                <p>
+                                    A brain MRI scan enters the segmentation
+                                    pipeline as the original image input.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        MRI
+                                    </span>
+
+                                    <span>
+                                        Medical Image
+                                    </span>
+
+                                    <span>
+                                        Input
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="preprocessing"
+                        >
+
+                            <span class="detail-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Preprocessing
+                                </h3>
+
+                                <p>
+                                    The image is resized to 256×256,
+                                    normalized using ImageNet statistics
+                                    and converted into a tensor.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        Resize
+                                    </span>
+
+                                    <span>
+                                        Normalize
+                                    </span>
+
+                                    <span>
+                                        Tensor
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="encoder"
+                        >
+
+                            <span class="detail-number">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    ResNet50 Encoder
+                                </h3>
+
+                                <p>
+                                    ResNet50 extracts hierarchical visual
+                                    features from the processed MRI image.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        ResNet50
+                                    </span>
+
+                                    <span>
+                                        Feature Extraction
+                                    </span>
+
+                                    <span>
+                                        ImageNet
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="decoder"
+                        >
+
+                            <span class="detail-number">
+                                04
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    U-Net++ Decoder
+                                </h3>
+
+                                <p>
+                                    U-Net++ uses nested skip connections
+                                    to reconstruct detailed spatial
+                                    information.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        U-Net++
+                                    </span>
+
+                                    <span>
+                                        Skip Connections
+                                    </span>
+
+                                    <span>
+                                        Decoder
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="head"
+                        >
+
+                            <span class="detail-number">
+                                05
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Segmentation Head
+                                </h3>
+
+                                <p>
+                                    The decoder output is converted into
+                                    a one-channel pixel-level prediction.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        1 Channel
+                                    </span>
+
+                                    <span>
+                                        Prediction
+                                    </span>
+
+                                    <span>
+                                        Pixel Level
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div
+                            class="arch-detail-content"
+                            data-detail="mask"
+                        >
+
+                            <span class="detail-number">
+                                06
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Tumor Mask
+                                </h3>
+
+                                <p>
+                                    The final binary mask highlights the
+                                    predicted tumor region in the MRI.
+                                </p>
+
+                                <div class="detail-tags">
+
+                                    <span>
+                                        Binary Mask
+                                    </span>
+
+                                    <span>
+                                        Tumor Region
+                                    </span>
+
+                                    <span>
+                                        Output
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- PIPELINE LABEL -->
+
+                    <div class="pipeline-label reveal">
+
+                        <span>
+                            MRI
+                        </span>
+
+                        <i>→</i>
+
+                        <span>
+                            PREPROCESSING
+                        </span>
+
+                        <i>→</i>
+
+                        <span>
+                            RESNET50
+                        </span>
+
+                        <i>→</i>
+
+                        <span>
+                            U-NET++
+                        </span>
+
+                        <i>→</i>
+
+                        <span>
+                            SEGMENTATION
+                        </span>
+
+                        <i>→</i>
+
+                        <span>
+                            MASK
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 TECHNOLOGIES
+            ================================================== -->
+
+            <section
+                id="technologies"
+                class="section technologies-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                04
+                            </span>
+
+                            TECHNOLOGY STACK
+
+                        </div>
+
+
+                        <h2>
+
+                            Built with
+                            <span>
+                                modern AI tools.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            A combination of deep learning, computer
+                            vision and deployment technologies.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="technology-system">
+
+
+                        <div class="technology-core reveal">
+
+                            <div class="technology-core-ring">
+
+                                <div class="technology-core-inner">
+
+                                    <span>
+                                        AI
+                                    </span>
+
+                                    <strong>
+                                        CORE
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="tech-grid">
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="pytorch"
+                            >
+
+                                <div class="tech-number">
+                                    01
+                                </div>
+
+                                <div class="tech-icon">
+                                    PT
+                                </div>
+
+                                <h3>
+                                    PyTorch
+                                </h3>
+
+                                <p>
+                                    Deep learning framework.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="smp"
+                            >
+
+                                <div class="tech-number">
+                                    02
+                                </div>
+
+                                <div class="tech-icon">
+                                    SMP
+                                </div>
+
+                                <h3>
+                                    Segmentation Models
+                                </h3>
+
+                                <p>
+                                    PyTorch segmentation library.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="unet"
+                            >
+
+                                <div class="tech-number">
+                                    03
+                                </div>
+
+                                <div class="tech-icon">
+                                    U++
+                                </div>
+
+                                <h3>
+                                    U-Net++
+                                </h3>
+
+                                <p>
+                                    Medical image segmentation architecture.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="resnet"
+                            >
+
+                                <div class="tech-number">
+                                    04
+                                </div>
+
+                                <div class="tech-icon">
+                                    R50
+                                </div>
+
+                                <h3>
+                                    ResNet50
+                                </h3>
+
+                                <p>
+                                    Deep feature extraction encoder.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="albumentations"
+                            >
+
+                                <div class="tech-number">
+                                    05
+                                </div>
+
+                                <div class="tech-icon">
+                                    ALB
+                                </div>
+
+                                <h3>
+                                    Albumentations
+                                </h3>
+
+                                <p>
+                                    Image preprocessing and augmentation.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="opencv"
+                            >
+
+                                <div class="tech-number">
+                                    06
+                                </div>
+
+                                <div class="tech-icon">
+                                    CV
+                                </div>
+
+                                <h3>
+                                    OpenCV
+                                </h3>
+
+                                <p>
+                                    Image processing and visualization.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="numpy"
+                            >
+
+                                <div class="tech-number">
+                                    07
+                                </div>
+
+                                <div class="tech-icon">
+                                    NP
+                                </div>
+
+                                <h3>
+                                    NumPy
+                                </h3>
+
+                                <p>
+                                    Numerical computation.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="flask"
+                            >
+
+                                <div class="tech-number">
+                                    08
+                                </div>
+
+                                <div class="tech-icon">
+                                    FL
+                                </div>
+
+                                <h3>
+                                    Flask
+                                </h3>
+
+                                <p>
+                                    AI model deployment backend.
+                                </p>
+
+                            </article>
+
+
+                            <article
+                                class="tech-card reveal"
+                                data-tech="cuda"
+                            >
+
+                                <div class="tech-number">
+                                    09
+                                </div>
+
+                                <div class="tech-icon">
+                                    CUDA
+                                </div>
+
+                                <h3>
+                                    CUDA
+                                </h3>
+
+                                <p>
+                                    GPU acceleration for inference.
+                                </p>
+
+                            </article>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PERFORMANCE
+            ================================================== -->
+
+            <section
+                id="performance"
+                class="section performance-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                05
+                            </span>
+
+                            PERFORMANCE
+
+                        </div>
+
+
+                        <h2>
+
+                            Measured
+                            <span>
+                                performance.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Evaluation results obtained from the trained
+                            segmentation model.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- PERFORMANCE MAIN -->
+
+                    <div class="performance-main">
+
+
+                        <div class="performance-score reveal">
+
+
+                            <div class="score-circle">
+
+                                <svg
+                                    viewBox="0 0 200 200"
+                                    aria-hidden="true"
+                                >
+
+                                    <circle
+                                        cx="100"
+                                        cy="100"
+                                        r="82"
+                                        class="score-circle-bg"
+                                    ></circle>
+
+                                    <circle
+                                        cx="100"
+                                        cy="100"
+                                        r="82"
+                                        class="score-circle-progress"
+                                    ></circle>
+
+                                </svg>
+
+
+                                <div class="score-circle-content">
+
+                                    <strong>
+                                        91.18%
+                                    </strong>
+
+                                    <span>
+                                        DICE
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <p>
+                                Dice Score
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="performance-score reveal">
+
+
+                            <div class="score-circle">
+
+                                <svg
+                                    viewBox="0 0 200 200"
+                                    aria-hidden="true"
+                                >
+
+                                    <circle
+                                        cx="100"
+                                        cy="100"
+                                        r="82"
+                                        class="score-circle-bg"
+                                    ></circle>
+
+                                    <circle
+                                        cx="100"
+                                        cy="100"
+                                        r="82"
+                                        class="score-circle-progress score-iou"
+                                    ></circle>
+
+                                </svg>
+
+
+                                <div class="score-circle-content">
+
+                                    <strong>
+                                        83.79%
+                                    </strong>
+
+                                    <span>
+                                        IoU
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <p>
+                                Intersection over Union
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="performance-details reveal">
+
+
+                            <div class="performance-detail">
+
+                                <span>
+                                    DATASET
+                                </span>
+
+                                <strong>
+                                    LGG MRI Segmentation
+                                </strong>
+
+                            </div>
+
+
+                            <div class="performance-detail">
+
+                                <span>
+                                    IMAGES
+                                </span>
+
+                                <strong>
+                                    3929 MRI Images
+                                </strong>
+
+                            </div>
+
+
+                            <div class="performance-detail">
+
+                                <span>
+                                    MASKS
+                                </span>
+
+                                <strong>
+                                    3929 Segmentation Masks
+                                </strong>
+
+                            </div>
+
+
+                            <div class="performance-detail">
+
+                                <span>
+                                    INPUT
+                                </span>
+
+                                <strong>
+                                    256 × 256
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DATA SPLIT -->
+
+                    <div class="dataset-stats reveal">
+
+
+                        <div class="dataset-stat">
+
+                            <span>
+                                TRAIN
+                            </span>
+
+                            <strong>
+                                3143
+                            </strong>
+
+                            <small>
+                                Images
+                            </small>
+
+                        </div>
+
+
+                        <div class="dataset-stat">
+
+                            <span>
+                                VALIDATION
+                            </span>
+
+                            <strong>
+                                393
+                            </strong>
+
+                            <small>
+                                Images
+                            </small>
+
+                        </div>
+
+
+                        <div class="dataset-stat">
+
+                            <span>
+                                TEST
+                            </span>
+
+                            <strong>
+                                393
+                            </strong>
+
+                            <small>
+                                Images
+                            </small>
+
+                        </div>
+
+
+                        <div class="dataset-stat">
+
+                            <span>
+                                TOTAL
+                            </span>
+
+                            <strong>
+                                3929
+                            </strong>
+
+                            <small>
+                                MRI Images
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LIVE DEMO
+            ================================================== -->
+
+            <section
+                id="demo"
+                class="section demo-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                06
+                            </span>
+
+                            LIVE AI DEMO
+
+                        </div>
+
+
+                        <h2>
+
+                            Analyze
+                            <span>
+                                an MRI.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            Upload a brain MRI image and let the trained
+                            segmentation model generate a tumor mask.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- DEMO CONTAINER -->
+
+                    <div class="demo-container">
+
+
+                        <!-- UPLOAD AREA -->
+
+                        <div
+                            id="uploadZone"
+                            class="upload-zone reveal"
+                        >
+
+
+                            <div class="upload-background">
+
+                                <div class="upload-grid"></div>
+
+                                <div class="upload-scan"></div>
+
+                            </div>
+
+
+                            <div class="upload-content">
+
+
+                                <div class="upload-icon">
+
+                                    <span>
+                                        🧠
+                                    </span>
+
+                                </div>
+
+
+                                <div class="upload-label">
+                                    AI MRI ANALYZER
+                                </div>
+
+
+                                <h3>
+                                    Drop MRI Scan Here
+                                </h3>
+
+
+                                <p>
+                                    or click to browse files
+                                </p>
+
+
+                                <span class="upload-formats">
+
+                                    JPG
+                                    <i>•</i>
+                                    JPEG
+                                    <i>•</i>
+                                    PNG
+                                    <i>•</i>
+                                    TIFF
+
+                                </span>
+
+
+                                <input
+                                    id="mriInput"
+                                    type="file"
+                                    accept=".jpg,.jpeg,.png,.tif,.tiff"
+                                    hidden
+                                >
+
+
+                                <div class="upload-actions">
+
+
+                                    <button
+                                        id="browseButton"
+                                        class="btn btn-secondary"
+                                        type="button"
+                                    >
+                                        Choose MRI
+                                    </button>
+
+
+                                    <button
+                                        id="analyzeButton"
+                                        class="btn btn-primary"
+                                        type="button"
+                                        disabled
+                                    >
+
+                                        <span>
+                                            Analyze MRI
+                                        </span>
+
+                                        <span>
+                                            →
+                                        </span>
+
+                                    </button>
+
+
+                                </div>
+
+
+                                <button
+                                    id="sampleButton"
+                                    class="sample-button"
+                                    type="button"
+                                >
+                                    Try With A Sample
+                                </button>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- SELECTED IMAGE PREVIEW -->
+
+                        <div
+                            id="selectedImagePanel"
+                            class="selected-image-panel"
+                            hidden
+                        >
+
+                            <div class="selected-image-header">
+
+                                <div>
+
+                                    <span>
+                                        SELECTED MRI
+                                    </span>
+
+                                    <strong id="selectedFileName">
+                                        MRI Scan
+                                    </strong>
+
+                                </div>
+
+
+                                <button
+                                    id="removeImageButton"
+                                    type="button"
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+
+                            <div class="selected-image-preview">
+
+                                <img
+                                    id="selectedImagePreview"
+                                    alt="Selected MRI Preview"
+                                >
+
+                                <div class="preview-scan-line"></div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PROCESSING PANEL -->
+
+                        <div
+                            id="processingPanel"
+                            class="processing-panel"
+                            hidden
+                        >
+
+                            <div class="processing-header">
+
+                                <div class="processing-icon">
+                                    🧠
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        AI PROCESSING
+                                    </span>
+
+                                    <h3>
+                                        Analyzing MRI Scan
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="processing-progress">
+
+                                <div
+                                    id="processingProgressBar"
+                                    class="processing-progress-bar"
+                                ></div>
+
+                            </div>
+
+
+                            <div class="processing-status">
+
+                                <span id="processingStatus">
+                                    Initializing...
+                                </span>
+
+                                <strong id="processingPercentage">
+                                    0%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="processing-steps">
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="1"
+                                >
+
+                                    <span class="processing-step-number">
+                                        01
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Image Loaded
+                                        </strong>
+
+                                        <small>
+                                            Reading MRI image
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="2"
+                                >
+
+                                    <span class="processing-step-number">
+                                        02
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Preprocessing
+                                        </strong>
+
+                                        <small>
+                                            Resize and normalization
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="3"
+                                >
+
+                                    <span class="processing-step-number">
+                                        03
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            ResNet50 Feature Extraction
+                                        </strong>
+
+                                        <small>
+                                            Extracting visual features
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="4"
+                                >
+
+                                    <span class="processing-step-number">
+                                        04
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            U-Net++ Segmentation
+                                        </strong>
+
+                                        <small>
+                                            Generating segmentation
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="5"
+                                >
+
+                                    <span class="processing-step-number">
+                                        05
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Generating Tumor Mask
+                                        </strong>
+
+                                        <small>
+                                            Creating final mask
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="processing-step"
+                                    data-step="6"
+                                >
+
+                                    <span class="processing-step-number">
+                                        06
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            Complete
+                                        </strong>
+
+                                        <small>
+                                            Analysis finished
+                                        </small>
+
+                                    </div>
+
+                                    <span class="processing-check">
+                                        ✓
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- RESULTS PANEL -->
+
+                        <div
+                            id="resultsPanel"
+                            class="results-panel"
+                            hidden
+                        >
+
+
+                            <div class="results-header">
+
+                                <div>
+
+                                    <span>
+                                        ANALYSIS COMPLETE
+                                    </span>
+
+                                    <h3>
+                                        Segmentation Results
+                                    </h3>
+
+                                </div>
+
+
+                                <div class="result-status">
+                                    ● COMPLETE
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- RESULT IMAGES -->
+
+                            <div class="results-grid">
+
+
+                                <!-- ORIGINAL -->
+
+                                <article class="result-card">
+
+                                    <div class="result-image-wrapper">
+
+                                        <img
+                                            id="originalResult"
+                                            alt="Original MRI"
+                                        >
+
+                                        <span class="result-image-label">
+                                            ORIGINAL
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="result-card-info">
+
+                                        <h4>
+                                            Original MRI
+                                        </h4>
+
+                                        <p>
+                                            Uploaded brain MRI scan
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+
+                                <!-- MASK -->
+
+                                <article class="result-card">
+
+                                    <div class="result-image-wrapper">
+
+                                        <img
+                                            id="maskResult"
+                                            alt="Tumor Segmentation Mask"
+                                        >
+
+                                        <span class="result-image-label">
+                                            MASK
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="result-card-info">
+
+                                        <h4>
+                                            Tumor Mask
+                                        </h4>
+
+                                        <p>
+                                            Predicted segmentation mask
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+
+                                <!-- RESULT -->
+
+                                <article class="result-card result-card-featured">
+
+                                    <div class="result-image-wrapper">
+
+                                        <img
+                                            id="segmentedResult"
+                                            alt="Segmented MRI Result"
+                                        >
+
+                                        <span class="result-image-label">
+                                            AI RESULT
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="result-card-info">
+
+                                        <h4>
+                                            Segmented Result
+                                        </h4>
+
+                                        <p>
+                                            MRI with predicted tumor region
+                                        </p>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+
+
+                            <!-- RESULT METADATA -->
+
+                            <div class="result-metadata">
+
+
+                                <div class="result-meta">
+
+                                    <span>
+                                        MODEL
+                                    </span>
+
+                                    <strong id="resultModel">
+                                        U-Net++ with ResNet50
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="result-meta">
+
+                                    <span>
+                                        INPUT SIZE
+                                    </span>
+
+                                    <strong id="resultInputSize">
+                                        256×256
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="result-meta">
+
+                                    <span>
+                                        DEVICE
+                                    </span>
+
+                                    <strong id="resultDevice">
+                                        -
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="result-meta">
+
+                                    <span>
+                                        ORIGINAL SIZE
+                                    </span>
+
+                                    <strong id="resultDimensions">
+                                        -
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- DISCLAIMER -->
+
+                            <div class="medical-disclaimer">
+
+                                <span>
+                                    ⚠
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Research / Educational Use Only
+                                    </strong>
+
+                                    <p>
+                                        This system is a research and
+                                        educational project and is not
+                                        intended to provide a medical diagnosis.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <button
+                                id="newAnalysisButton"
+                                class="btn btn-secondary"
+                                type="button"
+                            >
+                                Analyze Another MRI
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 TTA VISUALIZATION
+            ================================================== -->
+
+            <section
+                id="tta"
+                class="section tta-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                07
+                            </span>
+
+                            PREDICTION CONCEPT
+
+                        </div>
+
+
+                        <h2>
+
+                            Multiple views.
+                            <span>
+                                One prediction.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            A visual representation of the transformation
+                            and prediction concept used in segmentation
+                            workflows.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="tta-pipeline reveal">
+
+
+                        <div class="tta-step">
+
+                            <div class="tta-visual tta-original">
+
+                                <div class="mini-brain">
+                                    🧠
+                                </div>
+
+                            </div>
+
+                            <span class="tta-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Original
+                            </h3>
+
+                            <p>
+                                Original MRI input.
+                            </p>
+
+                        </div>
+
+
+                        <div class="tta-connector">
+                            →
+                        </div>
+
+
+                        <div class="tta-step">
+
+                            <div class="tta-visual">
+
+                                <div class="mini-brain flipped">
+                                    🧠
+                                </div>
+
+                            </div>
+
+                            <span class="tta-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Transformations
+                            </h3>
+
+                            <p>
+                                Flips and rotation concepts.
+                            </p>
+
+                        </div>
+
+
+                        <div class="tta-connector">
+                            →
+                        </div>
+
+
+                        <div class="tta-step">
+
+                            <div class="tta-visual">
+
+                                <div class="prediction-wave">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="tta-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Predictions
+                            </h3>
+
+                            <p>
+                                Model predictions.
+                            </p>
+
+                        </div>
+
+
+                        <div class="tta-connector">
+                            →
+                        </div>
+
+
+                        <div class="tta-step">
+
+                            <div class="tta-visual">
+
+                                <div class="mask-visual">
+                                    MASK
+                                </div>
+
+                            </div>
+
+                            <span class="tta-number">
+                                04
+                            </span>
+
+                            <h3>
+                                Final Mask
+                            </h3>
+
+                            <p>
+                                Final segmentation output.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="tta-note reveal">
+
+                        <span>
+                            NOTE
+                        </span>
+
+                        <p>
+                            The current deployed Flask inference endpoint
+                            performs the standard model prediction pipeline.
+                            TTA is not enabled in the current live endpoint.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DATASET
+            ================================================== -->
+
+            <section
+                id="dataset"
+                class="section dataset-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="section-heading reveal">
+
+
+                        <div class="section-label">
+
+                            <span>
+                                08
+                            </span>
+
+                            DATASET
+
+                        </div>
+
+
+                        <h2>
+
+                            LGG MRI
+                            <span>
+                                Segmentation Dataset.
+                            </span>
+
+                        </h2>
+
+
+                        <p>
+
+                            The model was trained and evaluated using
+                            MRI images and corresponding segmentation
+                            masks from the LGG MRI dataset.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- DATASET INFORMATION ONLY -->
+
+                    <div class="dataset-information reveal">
+
+
+                        <div>
+
+                            <span>
+                                TOTAL IMAGES
+                            </span>
+
+                            <strong>
+                                3929
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                TOTAL MASKS
+                            </span>
+
+                            <strong>
+                                3929
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                TRAIN
+                            </span>
+
+                            <strong>
+                                3143
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                VALIDATION
+                            </span>
+
+                            <strong>
+                                393
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                TEST
+                            </span>
+
+                            <strong>
+                                393
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CONTACT
+            ================================================== -->
+
+            <section
+                id="contact"
+                class="section contact-section"
+            >
+
+                <div class="container">
+
+
+                    <div class="contact-box reveal">
+
+
+                        <div class="contact-background">
+
+                            <div class="contact-grid"></div>
+
+                            <div class="contact-glow"></div>
+
+                        </div>
+
+
+                        <div class="contact-content">
+
+
+                            <div class="section-label">
+
+                                <span>
+                                    09
+                                </span>
+
+                                CONTACT
+
+                            </div>
+
+
+                            <h2>
+
+                                LET'S BUILD
+                                <br>
+
+                                <span>
+                                    SOMETHING INTELLIGENT.
+                                </span>
+
+                            </h2>
+
+
+                            <p>
+
+                                Interested in Medical AI, Computer Vision,
+                                intelligent software or creative technology?
+
+                            </p>
+
+
+
+                            <!-- =================================================
+                                 CONTACT TEAM GRID
+                            ================================================== -->
+
+                            <div class="contact-team-grid">
+
+
+
+                                <!-- =================================================
+                                     KAREEM REDA
+                                ================================================== -->
+
+                                <article class="contact-person-card">
+
+
+                                    <!-- PERSON IMAGE -->
+
+                                    <div class="contact-person-image">
+
+                                        <img
+                                            src="{{ url_for('static', filename='images/kareem.jpg') }}"
+                                            alt="Kareem Reda - Front-End Developer"
+                                        >
+
+                                    </div>
+
+
+
+                                    <!-- PERSON INFORMATION -->
+
+                                    <div class="contact-person-content">
+
+
+                                        <span class="contact-person-role">
+                                            AI & MACHINE LEARNING ENGINEER
+                                        </span>
+
+
+                                        <h3>
+                                            KAREEM REDA
+                                        </h3>
+
+
+                                        <p>
+                                             AI & MACHINE LEARNING ENGINEER 
+                                            & BACK-END / FRONT-END DEVELOPER
+                                        </p>
+
+
+
+                                        <!-- CONTACT LINKS -->
+
+                                        <div class="contact-person-links">
+
+
+                                            <!-- WHATSAPP -->
+
+                                            <a
+                                                href="https://wa.me/201061812453"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="Contact Kareem on WhatsApp"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    WA
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        WHATSAPP
+                                                    </small>
+
+                                                    <strong>
+                                                        +20 106 181 2453
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- LINKEDIN -->
+
+                                            <a
+                                                href="https://www.linkedin.com/in/kareem-reda-70a788323"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="View Kareem Reda LinkedIn profile"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    in
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        LINKEDIN
+                                                    </small>
+
+                                                    <strong>
+                                                        Kareem Reda
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- EMAIL -->
+
+                                            <a
+                                                href="mailto:kareemreda8787@gmail.com"
+                                                class="contact-person-link"
+                                                aria-label="Email Kareem Reda"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    @
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        EMAIL
+                                                    </small>
+
+                                                    <strong>
+                                                        kareemreda8787@gmail.com
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- GITHUB -->
+
+                                            <a
+                                                href="https://github.com/kareem-6181"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="View Kareem Reda GitHub profile"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    GH
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        GITHUB
+                                                    </small>
+
+                                                    <strong>
+                                                        kareem-6181
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+
+                                <!-- =================================================
+                                     MOSTAFA ATTIA
+                                ================================================== -->
+
+                                <article class="contact-person-card">
+
+
+                                    <!-- PERSON IMAGE -->
+
+                                    <div class="contact-person-image">
+
+                                        <img
+                                            src="{{ url_for('static', filename='images/mostafa.jpg') }}"
+                                            alt="Mostafa Attia - Back-End Developer"
+                                        >
+
+                                    </div>
+
+
+
+                                    <!-- PERSON INFORMATION -->
+
+                                    <div class="contact-person-content">
+
+
+                                        <span class="contact-person-role">
+                                            AI & MACHINE LEARNING ENGINEER
+                                        </span>
+
+
+                                        <h3>
+                                            MOSTAFA ATTIA
+                                        </h3>
+
+
+                                        <p>
+                                            AI & MACHINE LEARNING ENGINEER
+                                        </p>
+
+
+
+                                        <!-- CONTACT LINKS -->
+
+                                        <div class="contact-person-links">
+
+
+                                            <!-- WHATSAPP -->
+
+                                            <a
+                                                href="https://wa.me/201556738116"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="Contact Mostafa on WhatsApp"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    WA
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        WHATSAPP
+                                                    </small>
+
+                                                    <strong>
+                                                        +20 155 673 8116
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- LINKEDIN -->
+
+                                            <a
+                                                href="https://www.linkedin.com/in/mostafa-attia-971040370/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="View Mostafa Attia LinkedIn profile"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    in
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        LINKEDIN
+                                                    </small>
+
+                                                    <strong>
+                                                        Mostafa Attia
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- EMAIL -->
+
+                                            <a
+                                                href="mailto:atiamostafa778@gmail.com"
+                                                class="contact-person-link"
+                                                aria-label="Email Mostafa Attia"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    @
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        EMAIL
+                                                    </small>
+
+                                                    <strong>
+                                                        atiamostafa778@gmail.com
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+
+                                            <!-- GITHUB -->
+
+                                            <a
+                                                href="https://github.com/MostafaAttia-creator"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="contact-person-link"
+                                                aria-label="View Mostafa Attia GitHub profile"
+                                            >
+
+                                                <span class="contact-icon">
+                                                    GH
+                                                </span>
+
+                                                <span>
+
+                                                    <small>
+                                                        GITHUB
+                                                    </small>
+
+                                                    <strong>
+                                                        MostafaAttia-creator
+                                                    </strong>
+
+                                                </span>
+
+                                                <span>
+                                                    ↗
+                                                </span>
+
+                                            </a>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer id="footer">
+
+
+            <div class="container footer-container">
+
+
+                <div class="footer-brand">
+
+
+                    <a
+                        href="#home"
+                        class="footer-logo"
+                    >
+
+                        <span>
+                            🧠
+                        </span>
+
+                        <strong>
+                            BTMS
+                        </strong>
+
+                    </a>
+
+
+                    <p>
+                        Brain Tumor MRI Segmentation
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="footer-nav">
+
+
+                    <a href="#home">
+                        Home
+                    </a>
+
+                    <a href="#project">
+                        Project
+                    </a>
+
+                    <a href="#architecture">
+                        Architecture
+                    </a>
+
+                    <a href="#performance">
+                        Performance
+                    </a>
+
+                    <a href="#demo">
+                        Demo
+                    </a>
+
+                    <a href="#contact">
+                        Contact
+                    </a>
+
+
+                </div>
+
+
+
+                <div class="footer-bottom">
+
+
+                    <p>
+
+                        © 2026 Brain Tumor MRI Segmentation.
+                        All rights reserved.
+
+                    </p>
+
+
+                    <p>
+
+                        Research / Educational Use Only —
+                        Not a Medical Diagnosis.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         TOAST / NOTIFICATION
+    ========================================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="alert"
+        aria-live="polite"
+    >
+
+        <span class="toast-icon">
+            ✓
+        </span>
+
+        <span
+            id="toastMessage"
+            class="toast-message"
+        >
+            Done
+        </span>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+
+</body>
+
+</html>
