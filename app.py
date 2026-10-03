@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import torch
 import segmentation_models_pytorch as smp
+import urllib.request
 
 
 # =========================
@@ -28,11 +29,59 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 MODEL_PATH = os.path.join(BASE_DIR, "model.pt")
 
+MODEL_URL = (
+    "https://huggingface.co/"
+    "karerem/brain-tumor-segmentation/"
+    "resolve/main/model.pt"
+)
+
 IMAGE_SIZE = 256
 
 device = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
+
+
+# =========================
+# Download Model
+# =========================
+
+def download_model():
+
+    if os.path.exists(MODEL_PATH):
+
+        print("model.pt already exists.")
+
+        return
+
+    print("======================================")
+    print("Downloading model.pt...")
+    print("======================================")
+
+    try:
+
+        urllib.request.urlretrieve(
+            MODEL_URL,
+            MODEL_PATH
+        )
+
+        print("model.pt downloaded successfully!")
+
+    except Exception as e:
+
+        if os.path.exists(MODEL_PATH):
+            os.remove(MODEL_PATH)
+
+        raise RuntimeError(
+            f"Could not download model.pt: {str(e)}"
+        )
+
+
+# =========================
+# Download Model If Needed
+# =========================
+
+download_model()
 
 
 # =========================
@@ -348,8 +397,15 @@ def output_file(filename):
 
 if __name__ == "__main__":
 
+    port = int(
+        os.environ.get(
+            "PORT",
+            10000
+        )
+    )
+
     app.run(
-        host="127.0.0.1",
-        port=5000,
-        debug=True
+        host="0.0.0.0",
+        port=port,
+        debug=False
     )
